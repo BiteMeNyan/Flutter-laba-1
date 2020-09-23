@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 class Cat {
 	String name;
 	int age;
@@ -34,7 +36,35 @@ main() {
 	john.display1();
 	apple.harvest = 300;
 	print(apple.harvest);
-}
+
+	var map = {
+	1: "Cat",
+	2: "Dog",
+	3: "Fox"
+	};
+
+	Map<int, String> map2 = {
+	1: "Cat",
+	2: "Dog",
+	3: "Fox"
+	};
+
+	print(map[1]);
+	print(map2[1]);
+	map2[1] = "Bear";
+	print(map2[1]);
+
+	print("After deleting a key:");
+	map.remove(1);
+    print(map.containsKey(1));    
+    print(map.containsValue("Cat"));
+
+    print("Singleton:");
+    var s1 = Singleton();
+    var s2 = Singleton();
+    print(identical(s1, s2)); 
+    print(s1 == s2); 
+	}
 
 class Fruit {
 	String type;
@@ -52,3 +82,14 @@ class Fruit {
 
 	Fruit({this.type, this.current_amount, this.color, });
 }
+
+class Singleton {
+  static final Singleton _singleton = Singleton._internal();
+
+  factory Singleton() {
+    return _singleton;
+  }
+
+  Singleton._internal();
+}
+
